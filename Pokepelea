@@ -1,0 +1,196 @@
+#include <iostream>
+using namespace std;
+int main()
+{//alvaro sebastian guerrero hormazabal
+	string nombre[100];
+	int vida[100];
+	int ataque[100];
+	//obtencion de datos nombre,vida y ataque
+	for(int i=0;i<100;i++)
+	{
+		cout<<"Cual va a ser el nombre del enemigo numero "<<i<<" -----> ";cin>>nombre[i];
+	}
+	cout<<endl;
+	cout<<"============================="<<endl;
+	cout<<endl;
+	for(int s=0;s<100;s++)
+	{
+		cout<<"Cual va a ser la vida del enemigo numero "<<s<<" -----> ";cin>>vida[s];
+	}
+	cout<<endl;
+	cout<<"============================="<<endl;
+	cout<<endl;
+	for(int a=0;a<100;a++)
+	{
+		cout<<"Cual va a ser el ataque del enemigo numero "<<a<<" -----> ";cin>>ataque[a];
+	}
+	//finaliza la obtencion de datos 
+	cout<<endl;
+	cout<<"============================="<<endl;
+	cout<<"============================="<<endl;
+	cout<<endl;
+	//que enemigo tiene mas vida
+	int mayor=0;
+	string enemigo;
+	for(int q=0;q<100;q++)
+	{
+		if(vida[q]>mayor)
+		{
+			mayor=vida[q];
+			enemigo=nombre[q];
+		}
+	}
+	cout<<"El enemigo con mayor cantidad de vida es "<<enemigo<<" con "<<mayor<<" de vida "<<endl;
+	cout<<endl;
+	cout<<"============================="<<endl;
+	cout<<"============================="<<endl;
+	cout<<endl;
+	//los tres enemigos con menor ataque
+	int menor1=9999999;
+	int menor2=9999999;
+	int menor3=9999999;
+	int n1=0,n2=0,n3=0;
+	string nombre1,nombre2,nombre3;
+	for(int n=0;n<100;n++)
+	{
+		if(ataque[n]<menor1)
+		{
+			menor1=ataque[n];
+			 n1=ataque[n];
+			 nombre1=nombre[n];
+			n=n-n-1;
+		}
+		else if(ataque[n]<menor2)
+		{
+			if(nombre[n]!=nombre1)
+			{
+			menor2=ataque[n];
+			 n2=ataque[n];
+			 nombre2=nombre[n];	
+			 n=n-n-1;	
+			}
+		}
+		else if(ataque[n]<menor3)
+		{
+			if(nombre[n]!=nombre1 and nombre[n]!=nombre2)
+			{
+			menor3=ataque[n];
+			 nombre3=nombre[n];
+			 n=n-n-1;	
+			}
+		}
+	}
+	cout<<"El primer enemigo con menor ataque es: "<<nombre1<<" con el ataque "<<menor1<<endl;
+	cout<<"El segundo enemigo con menor ataque es: "<<nombre2<<" con el ataque "<<menor2<<endl;
+	cout<<"El tercer enemigo con menor ataque es: "<<nombre3<<" con el ataque "<<menor3<<endl;
+	cout<<endl;
+	cout<<"============================="<<endl;
+	cout<<"============================="<<endl;
+	cout<<endl;
+	//restarle vida a todos los enemigos con ataque inferior a 50 generado por el usuario que ponga el numero
+	int w,s=99;
+	string nombrevida;
+	cout<<"coloque una cantidad positiva para restar vida a los enemigos con ataque inferior a 1000 ----> ",cin>>w;
+	cout<<endl;
+	cout<<"============================="<<endl;
+	cout<<endl;
+	for(int j=0;j<100;j++)
+	{
+		if(ataque[j]<50)
+		{
+			vida[j]=vida[j]-w;
+			cout<<"La vida que tiene el enemigo "<<nombre[j]<<" ahora es de "<<vida[j]<<endl;
+			s=s+1;
+		}
+		else if(j==s)
+		{
+			cout<<"No existe ningun enemigo con ataque menor a 50 "<<endl;
+		}
+	}
+	cout<<endl;
+	cout<<"============================="<<endl;
+	cout<<"============================="<<endl;
+	cout<<endl;
+	//pedir indice para mostrar los enemigos que tienen mas vida y cuantos enemigos tienen mas ataque 
+	int indice=0;
+	cout<<"Cual es el indice que quiere ver, para mostrar los enemigos que tienen mas vida y tambien mas ataque (0 a 99) -----> ";cin>>indice;
+	for(int m=0;m<100;m++)
+	{
+		if(indice>=99 or indice<0 )
+		{
+			cout<<"El indice que ha colocado es incorrecto "<<endl;
+			m=m+99;
+		}
+		 else if(vida[m]>vida[indice])
+		{
+			cout<<"El enemigo "<<nombre[m]<<" tiene mayor vida que el enemigo seleccionado. vida enemigo: "<<vida[m]<<endl;
+		}
+	}
+		for(int m=0;m<100;m++)
+	{
+		if(indice>=100 or indice<0 )
+		{
+			cout<<"El indice que ha colocado es incorrecto "<<endl;
+			m=m+99;
+		}
+		  else if(ataque[m]>ataque[indice])
+		{
+			cout<<"El enemigo "<<nombre[m]<<" tiene mayor ataque que el enemigo seleccionado. ataque enemigo: "<<ataque[m]<<endl;
+		}
+	}
+	cout<<endl;
+	cout<<"============================="<<endl;
+	cout<<"============================="<<endl;
+	cout<<endl;
+	//mostrar los datos del enemigo pedido (Nombre) por el usuario, vida y ataque 
+	string enemigo99;
+	int l=99;
+	cout<<"Coloque el nombre de un enemigo para mostrar sus estadisticas ----> ";cin>>enemigo99;
+	cout<<endl;
+	cout<<"============================="<<endl;
+	cout<<endl;
+	for(int b=0;b<100;b++)
+	{
+		if(enemigo99==nombre[b])
+		{
+			cout<<"La vida de este enemigo es: "<<vida[b]<<" y el ataque de este mismo es: "<<ataque[b]<<endl;
+			l=l+1;
+		}
+		else if(b==l)
+		{
+			cout<<"El enemigo que ha escojido no se encuentra registrado "<<endl;
+		}
+	}
+	cout<<endl;
+	cout<<"============================="<<endl;
+	cout<<"============================="<<endl;
+	cout<<endl;
+	//buscar los numeros impares indices y sacar el promedio del ataque y la vida 
+	float indice2=0,envida=0,enataque=0,z=0;
+	float promediovida[100],promedioataque[100];
+	float promediototalvida=0,promediototalataque=0;
+	for(int d=0;d<100;d++)
+	{
+		promediovida[d]=0;
+		promedioataque[d]=0;
+	}
+	for(int p=0;p<100;p++)
+	{
+		if(p%2!=0)
+		{
+			promediovida[p]=vida[p];
+			promedioataque[p]=ataque[p];
+			z=z+1;
+		}
+	}
+	for(int x=0;x<100;x++)
+	{
+	envida=envida+promediovida[x];
+	enataque=enataque+promedioataque[x];
+	}
+	promediototalvida=(envida+vida[0])/(z+1);
+	promediototalataque=(enataque+ataque[0])/(z+1);
+	cout<<"El promedio de vida de los enemigos con indice primo es "<<promediototalvida<<endl;
+	cout<<"El promedio de ataque de los enemigos con indice primo es "<<promediototalataque<<endl;
+}
+
